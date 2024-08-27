@@ -1,0 +1,1496 @@
+.aos-animate {
+  opacity: 1; /* Ensure the elements become fully visible */
+}
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+/* Fonts */
+
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+  --background-color: #ffffff;
+  --default-color: #272829;
+  --heading-color: #050d18;
+  --accent-color: #149ddd;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --nav-color: #a8a9b4;
+  --nav-hover-color: #ffffff;
+  --nav-mobile-background-color: #040b14;
+  --nav-dropdown-background-color: #040b14;
+  --nav-dropdown-color: #a8a9b4;
+  --nav-dropdown-hover-color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #f4fafd;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #040b14;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #151f2b;
+  --contrast-color: #ffffff;
+}
+
+/*--------------------------------------------------------------
+# Global Styles
+--------------------------------------------------------------*/
+body {
+  color: #888A8D; /* Gunmetal Gray text color */
+  background-color: #121212; /* Dark background color */
+  font-family: 'Arial', sans-serif;
+}
+
+a {
+  color: #708090; /* Slate Gray accent color */
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+  color: #46545C; /* Darker Slate Gray for hover */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #888A8D; /* Gunmetal Gray heading color */
+  font-family: 'Arial', sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  color: #888A8D; /* Gunmetal Gray text color */
+  background-color: #121212; /* Dark background color */
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0 15px;
+  width: 300px;
+  transition: transform 0.3s ease-in-out; /* Smooth animation */
+  overflow-y: auto;
+  z-index: 997;
+  border-right: 1px solid rgba(136, 138, 141, 0.3); /* Lighter Gunmetal Gray border */
+}
+
+/* Profile Image */
+.profile-img {
+  margin: 20px 0;
+}
+
+.profile-img img {
+  width: 220px; /* Adjusted size */
+  height: 220px; /* Adjusted size */
+  border-radius: 50%;
+  border: 2px solid #708090; /* Slate Gray border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Faster animation */
+}
+
+.profile-img img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.header .logo {
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.header .logo img {
+  max-height: 32px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 700;
+  color: #888A8D; /* Gunmetal Gray heading color */
+}
+
+.header .social-links {
+  margin: 0 0 20px 0;
+}
+
+.header .social-links a {
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(136, 138, 141, 0.1); /* Light Gunmetal Gray background */
+  color: #888A8D; /* Gunmetal Gray for social icons */
+  margin: 0 2px;
+  border-radius: 50%;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.2s ease, color 0.2s ease; /* Faster animation */
+}
+
+.header .social-links a:hover {
+  background-color: #708090; /* Slate Gray background on hover */
+  color: #e0e0e0; /* Light text on hover */
+}
+
+@media (min-width: 1200px) {
+
+  .header~main,
+  .header~#footer {
+    margin-left: 300px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header {
+    left: -100%;
+  }
+}
+
+.header.header-show {
+  left: 0;
+}
+
+.header .header-toggle {
+  color: #e0e0e0; /* Light text color */
+  background-color: #46545C; /* Dark Slate Gray */
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+  transition: background-color 0.2s ease, color 0.2s ease; /* Faster animation */
+  border: none;
+  text-align: center;
+}
+
+.header .header-toggle:hover {
+  background-color: #707070; /* Lighter Slate Gray on hover */
+  color: #e0e0e0; /* Light grey text */
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+.mobile-nav-toggle {
+  display: none;
+}
+
+.navmenu {
+  padding: 0;
+  z-index: 9997;
+}
+
+.navmenu ul {
+  list-style: none;
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+.navmenu a,
+.navmenu a:focus {
+  color: var(--nav-color); /* Replacing hardcoded color with CSS variable */
+  padding: 15px 10px; /* Adjusted padding for spacing */
+  font-family: var(--nav-font); /* Using CSS variable for font */
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  width: 100%;
+}
+
+.navmenu a .navicon,
+.navmenu a:focus .navicon {
+  font-size: 20px; /* Adjust icon size */
+  margin-right: 10px;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions for icons */
+}
+
+.navmenu a .toggle-dropdown,
+.navmenu a:focus .toggle-dropdown {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  flex-shrink: 0;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+.navmenu a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 4px; /* Thin underline */
+  background-color: #708090; /* Slate Gray underline */
+  transition: width 0.3s ease, background-color 0.3s ease; /* Smooth underline transition */
+}
+
+.navmenu a .toggle-dropdown:hover,
+.navmenu a:focus .toggle-dropdown:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus {
+  color: #e0e0e0; /* Light color for better contrast */
+}
+
+.navmenu a:hover::before,
+.navmenu .active::before {
+  width: 100%; /* Expand underline on hover or active */
+}
+
+.navmenu a:hover .navicon,
+.navmenu .active .navicon,
+.navmenu .active:focus .navicon {
+  color: #e0e0e0; /* Light color for icon */
+  transform: scale(1.2); /* Slightly enlarge icon on hover */
+}
+
+.navmenu .dropdown {
+  display: block;
+}
+
+.navmenu .dropdown ul {
+  display: none;
+  position: static;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  background-color: #121212; /* Dark background color for dropdown */
+  border: 1px solid rgba(136, 138, 141, 0.3); /* Lighter Gunmetal Gray border */
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+  z-index: 99;
+}
+
+.navmenu .dropdown ul ul {
+  background-color: rgba(33, 37, 41, 0.1); /* Darker background for nested dropdowns */
+}
+
+.navmenu .dropdown>.dropdown-active {
+  display: block;
+  background-color: rgba(33, 37, 41, 0.03);
+}
+
+.navmenu .dropdown a,
+.navmenu .dropdown a:focus {
+  color: var(--nav-dropdown-color);
+}
+
+.navmenu .dropdown a:hover,
+.navmenu .dropdown .active,
+.navmenu .dropdown .active:focus {
+  color: var(--nav-dropdown-hover-color);
+}
+
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  padding: 40px 0;
+  position: relative;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 4px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: -15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 25px 0;
+  position: relative;
+}
+
+.page-title h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  overflow: clip;
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  bottom: 0;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Changed from center to flex-start */
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero:before {
+  content: "";
+  background: color-mix(in srgb, #888A8D, transparent 80%); /* Use Gunmetal Gray */
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+  padding-left: 50px; /* Add padding to move the content to the right */
+  max-width: 80%; /* Constrain the width of the content to avoid overflow */
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 700;
+  color: #a6c1cf; /* Slate Gray */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add subtle shadow to the text */
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero p {
+  margin: 5px 0 0 0;
+  font-size: 26px;
+  color: #707070; /* Gunmetal Gray */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Add shadow for readability */
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero p span {
+  letter-spacing: 1px;
+  border-bottom: 2px solid #46545C; /* Slate Gray */
+}
+
+.hero .social-links {
+  margin-top: 25px;
+}
+
+.hero .social-links a {
+  font-size: 24px;
+  display: inline-block;
+  color: color-mix(in srgb, #708090, transparent 50%); /* Slate Gray */
+  line-height: 1;
+  margin-right: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.hero .social-links a:hover {
+  color: #46545C; /* Slate Gray */
+}
+
+@media (max-width: 768px) {
+  .hero .container {
+    padding-left: 30px; /* Adjust padding for smaller screens */
+  }
+
+  .hero h2 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about {
+  padding: 60px 0; /* Add padding for better spacing */
+}
+
+.about .section-title {
+  margin-bottom: -60px;
+}
+
+.about .content {
+  color: #2C3E50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about .content p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about .content p strong {
+  color: #1A1A1A; /* Darker color for emphasis */
+  font-weight: 700;
+}
+
+.about .content p em {
+  color: #2C3E50; /* Emphasize with a different color */
+}
+
+.about .job-roles {
+  display: flex;
+  flex-wrap: wrap; /* Ensure items wrap to the next line if needed */
+  justify-content: center; /* Center items horizontally */
+  margin-top: 40px;
+}
+
+.about .job-roles .col-md-6,
+.about .job-roles .col-lg-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text within each column */
+  margin-bottom: 30px;
+}
+
+.about .job-roles i {
+  color: #2C3E50;
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+}
+
+.about .job-roles h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.about .btn-content {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  width: 100%; /* Make sure it stretches to full width */
+  margin-top: 30px; /* Space above button */
+}
+
+.about .btn-content .btn-glassy {
+  background: rgba(44, 62, 80, 0.1);
+  border: 2px solid #2C3E50;
+  color: #2C3E50;
+  backdrop-filter: blur(10px) saturate(150%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.about .btn-content .btn-glassy:hover {
+  background: #2C3E50;
+  color: #F9F9F9;
+  border-color: #2C3E50;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.about img {
+  border-radius: 50%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Make the image responsive */
+  max-width: 500px; /* Adjust max-width as needed */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .about .section-title h2 {
+    font-size: 30px;
+  }
+
+  .about .content p {
+    font-size: 16px;
+  }
+
+  .about .job-roles i {
+    font-size: 2rem;
+  }
+
+  .about .btn-content {
+    margin-top: 20px;
+  }
+
+  .about .btn-content .btn-glassy {
+    padding: 10px 22px;
+    font-size: 16px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Skills Section
+--------------------------------------------------------------*/
+.skills {
+  padding: 60px 0;
+  background-color: #FFFFFF; /* Light Gray for a subtle background */
+}
+
+.skills .section-title {
+  margin-bottom: -30px;
+}
+
+/* Skill item styling */
+.skill-item {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.skill-title{
+  padding-top: 12px;
+  font-size: 18px;
+}
+
+.icon-wrapper {
+  padding: 20px;
+  border-radius: 60%; /* Makes the box circular */
+  background-color: #B0B0B0; /* Light Gray fill color inside the circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px; /* Fixed height for consistent sizing */
+  width: 120px; /* Fixed width for consistent sizing */
+  border: 2px solid #DDDDDD; /* Light Gray border for better definition */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.icon-wrapper:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: #9E9E9E; /* Slightly darker gray on hover for effect */
+}
+
+.icon-wrapper .icon {
+  font-size: 45px; /* Adjusted icon size */
+  color: #46515C; /* Darker Gray for icon color */
+  margin-bottom: 10px; /* Spacing between icon and text */
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+  .icon-wrapper {
+    height: 120px;
+    width: 120px;
+    padding: 15px;
+  }
+
+  .icon-wrapper .icon {
+    font-size: 36px;
+  }
+
+}
+
+/*--------------------------------------------------------------
+# Journey Section
+--------------------------------------------------------------*/
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  width: 4px;
+  height: 100%;
+  background-color: #46545C;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 20px 60px;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #707070;
+  border: 2px solid #888A8D;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+.resume-title {
+  color: #46545C;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.date {
+  display: inline-block;
+  padding: 6px 15px;
+  background-color: #888A8D;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.timeline-content p em {
+  color: #707070;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.achievements p {
+  margin: 5px 0;
+  color: #46545C;
+  font-size: 16px;
+}
+
+.achievements p strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 0;
+  }
+
+  .timeline::before {
+    left: 0;
+  }
+
+  .timeline-item {
+    padding-left: 0;
+    padding-top: 40px;
+  }
+
+  .timeline-item::before {
+    left: 0;
+  }
+
+  .timeline-icon {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -15px;
+  }
+
+  .timeline-content {
+    padding-top: 20px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .timeline-content p,
+  .achievements {
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  .resume-title {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .date {
+    margin-top: 5px;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+/* Portfolio Section Styling */
+.portfolio {
+  background-color: #ffffff; /* White background for the section */
+}
+
+.portfolio .portfolio-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+  background: #f9f9f9; /* Light gray background for the filter buttons container */
+  border-radius: 8px; /* Rounded corners for the filter button container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow around the filter buttons container */
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700; /* Bold text */
+  margin: 0 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  border-radius: 4px; /* Rounded corners for each filter button */
+  background-color: #f1f1f1; /* Light gray background for filter buttons */
+  color: #707070; /* Gunmetal Gray text color */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Add text shadow for better readability */
+.portfolio .portfolio-filters li {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li.filter-active {
+  color: #ffffff; /* White text color on hover/active */
+  background-color: #708090; /* Slate Gray background on hover/active */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect on hover/active */
+  transform: scale(1.05); /* Slightly enlarge the button on hover/active */
+}
+
+/* Adjust the filter button styling for smaller screens */
+@media (max-width: 575px) {
+  .portfolio .portfolio-filters li {
+    font-size: 16px; /* Larger text on smaller screens */
+    margin: 0 5px;
+  }
+}
+
+/* Portfolio Content Styling */
+.portfolio .portfolio-content {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px; /* Rounded corners for the portfolio items */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+}
+
+.portfolio .portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure images cover the container without distortion */
+  transition: 0.3s;
+  border-radius: 8px; /* Rounded corners for the images */
+}
+
+.portfolio .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 8px; /* Rounded corners for the info box */
+}
+
+.portfolio .portfolio-info h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #888A8D; /* Gunmetal Gray background for the title */
+  padding: 10px;
+  border-radius: 4px; /* Rounded corners for the title background */
+}
+
+.portfolio .portfolio-info p {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.portfolio .portfolio-info .preview-link,
+.portfolio .portfolio-info .details-link {
+  position: absolute;
+  font-size: 26px;
+  color: #ffffff;
+  transition: 0.3s;
+  line-height: 1.2;
+}
+
+/* Adjusting the alignment of icons */
+.portfolio .portfolio-info .preview-link {
+  left: calc(50% - 35px); /* Center the preview link icon */
+  top: calc(50% - 20px); /* Adjust vertical alignment */
+}
+
+.portfolio .portfolio-info .details-link {
+  left: calc(50% + 10px); /* Center the details link icon */
+  font-size: 34px;
+  top: calc(50% - 20px); /* Align vertically with preview link icon */
+}
+
+.portfolio .portfolio-info .preview-link:hover,
+.portfolio .portfolio-info .details-link:hover {
+  color: #708090; /* Slate Gray color on hover */
+}
+
+.portfolio .portfolio-content:hover .portfolio-info {
+  opacity: 1;
+}
+
+.portfolio .portfolio-content:hover .portfolio-image {
+  transform: scale(1.1);
+}
+
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+
+.contact {
+  background-color: #ffffff; /* White background */
+  padding: 60px 0;
+}
+
+.contact .section-title {
+  margin-bottom: -30px;
+}
+
+.contact .info-wrap,
+.contact #contact-form {
+  background-color: #f7f7f7; /* Light Gray */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 8px;
+  height: 100%; /* Ensure full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact .info-wrap {
+  height: 100%; /* Match the height of the form container */
+  margin-bottom: 0; /* Remove any default margin */
+}
+
+.contact .info-item {
+  margin-bottom: 20px; /* Adjusted spacing between items */
+  display: flex;
+  align-items: center;
+}
+
+.contact .info-item:nth-of-type(1) {
+  animation-delay: 0.5s; /* Delay for the first item */
+}
+
+.contact .info-item:nth-of-type(2) {
+  animation-delay: 1s; /* Delay for the second item */
+}
+
+.contact .info-item:nth-of-type(3) {
+  animation-delay: 1.5s; /* Delay for the third item */
+}
+
+.contact .info-item i {
+  font-size: 24px; /* Slightly larger icon size */
+  color: #ffffff; /* White text color */
+  background: #888A8D; /* Gunmetal Gray background */
+  width: 50px; /* Consistent width */
+  height: 50px; /* Consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Rounded icon */
+  transition: all 0.3s ease-in-out; /* Smooth transition on hover */
+  margin-right: 15px; /* Space between icon and text */
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 18px; /* Font size for headers */
+  font-weight: 600; /* Slightly reduced font weight */
+  margin-bottom: 2px; /* Minimal margin below header */
+  color: #46545C; /* Slate Gray text color */
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px; /* Font size for paragraph text */
+  color: #46545C; /* Slate Gray text color */
+}
+
+.contact .info-item:hover i {
+  background: #46545C; /* Slate Gray background on hover */
+  color: #ffffff; /* White text color on hover */
+}
+
+
+.contact #contact-form {
+  background-color: #f7f7f7; /* Light Gray */
+  padding: 25px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 0; /* Remove any default margin */
+}
+
+.contact #contact-form input[type=text],
+.contact #contact-form input[type=email],
+.contact #contact-form textarea {
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  color: #46545C; /* Slate Gray */
+  background-color: #ffffff; /* White */
+  border: 1px solid #888A8D; /* Gunmetal Gray */
+}
+
+.contact #contact-form input[type=text]:focus,
+.contact #contact-form input[type=email]:focus,
+.contact #contact-form textarea:focus {
+  border-color: #46545C; /* Slate Gray */
+}
+
+.contact #contact-form input[type=text]::placeholder,
+.contact #contact-form input[type=email]::placeholder,
+.contact #contact-form textarea::placeholder {
+  color: #888A8D; /* Gunmetal Gray */
+}
+
+.contact #contact-form button[type=submit] {
+  color: #ffffff; /* White */
+  background: #888A8D; /* Gunmetal Gray */
+  border: 0;
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.contact #contact-form button[type=submit]:hover {
+  background: #46545C; /* Slate Gray */
+  color: #ffffff; /* White */
+}
+
+@media (min-width: 992px) {
+  .contact .row {
+    align-items: stretch;
+    display: flex; /* Ensures that both columns are treated as flex items */
+    justify-content: space-between; /* Spreads the two columns evenly */
+  }
+
+  .contact .col-lg-5,
+  .contact .col-lg-7 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Optional: Adds slight movement */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+/* Portfolio Section Styling */
+.portfolio {
+  background-color: #ffffff; /* White background for the section */
+}
+
+/* Section Title Styling */
+.portfolio .section-title {
+  margin-bottom: -30px;
+}
+
+/* Filter Buttons Styling */
+.portfolio .portfolio-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+  background: #f9f9f9; /* Light gray background for the filter buttons container */
+  border-radius: 8px; /* Rounded corners for the filter button container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow around the filter buttons container */
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700; /* Bold text */
+  margin: 0 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  border-radius: 4px; /* Rounded corners for each filter button */
+  background-color: #f1f1f1; /* Light gray background for filter buttons */
+  color: #707070; /* Gunmetal Gray text color */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Add text shadow for better readability */
+.portfolio .portfolio-filters li {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li.filter-active {
+  color: #ffffff; /* White text color on hover/active */
+  background-color: #708090; /* Slate Gray background on hover/active */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect on hover/active */
+  transform: scale(1.05); /* Slightly enlarge the button on hover/active */
+}
+
+/* Adjust the filter button styling for smaller screens */
+@media (max-width: 575px) {
+  .portfolio .portfolio-filters li {
+    font-size: 16px; /* Larger text on smaller screens */
+    margin: 0 5px;
+  }
+}
+
+/* Container for Portfolio Items */
+.portfolio .isotope-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Spacing between items */
+  justify-content: center; /* Center items in the container */
+}
+
+/* Uniform Portfolio Item Size */
+.portfolio .portfolio-item {
+  flex: 1 1 calc(33.333% - 20px); /* Three items per row with gap included */
+  max-width: calc(33.333% - 20px); /* Ensure uniform width */
+  height: 300px; /* Fixed height for uniformity */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  position: relative;
+}
+
+/* Portfolio Content Styling */
+.portfolio .portfolio-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.portfolio .portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure images cover the container without distortion */
+  transition: 0.3s;
+  border-radius: 8px; /* Rounded corners for the images */
+}
+
+/* Info Box Styling */
+.portfolio .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 8px; /* Rounded corners for the info box */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio .portfolio-info h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #888A8D; /* Gunmetal Gray background for the title */
+  padding: 10px;
+  border-radius: 4px; /* Rounded corners for the title background */
+  text-align: center;
+}
+
+.portfolio .portfolio-info p {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin: 10px 0;
+}
+
+.portfolio .portfolio-info .preview-link,
+.portfolio .portfolio-info .details-link {
+  font-size: 26px;
+  color: #ffffff;
+  transition: 0.3s;
+  line-height: 1.2;
+}
+
+/* Adjusting the alignment of icons */
+.portfolio .portfolio-info .preview-link {
+  position: absolute;
+  left: calc(50% - 35px); /* Center the preview link icon */
+  top: calc(50% - 20px); /* Adjust vertical alignment */
+}
+
+.portfolio .portfolio-info .details-link {
+  position: absolute;
+  left: calc(50% + 10px); /* Center the details link icon */
+  font-size: 34px;
+  top: calc(50% - 20px); /* Align vertically with preview link icon */
+}
+
+.portfolio .portfolio-info .preview-link:hover,
+.portfolio .portfolio-info .details-link:hover {
+  color: #708090; /* Slate Gray color on hover */
+}
+
+.portfolio .portfolio-content:hover .portfolio-info {
+  opacity: 1;
+}
+
+.portfolio .portfolio-content:hover .portfolio-image {
+  transform: scale(1.1);
+}
+
+/* Container for the Swiper slider */
+.portfolio-details-slider {
+  position: relative;
+  max-width: 100%; /* Ensure the slider fits within the column */
+}
+
+/* Swiper Slide */
+.portfolio-details-slider .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 400px; /* Fixed height for the image */
+  overflow: hidden;
+}
+
+.portfolio-details-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the slider area */
+}
+
+/* Positioning the pagination below the image */
+.swiper-pagination {
+  position: relative;
+  bottom: -20px; /* Adjust to move below the image */
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  background-color: #708090; /* Slate Gray bullets */
+  opacity: 1;
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #000000; /* White color for the active bullet */
+}
+
+.portfolio-details-slider .swiper-pagination {
+  margin-top: 10px;
+}
+
+/* Additional styling for the swiper container */
+.swiper-container {
+  padding-bottom: 30px; /* To create space for the pagination */
+}
+
+
+
+/*--------------------------------------------------------------
+# Service Details Section
+--------------------------------------------------------------*/
+.service-details .services-list {
+  padding: 10px 30px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-bottom: 20px;
+}
+
+.service-details .services-list a {
+  display: block;
+  line-height: 1;
+  padding: 8px 0 8px 15px;
+  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  margin: 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  transition: 0.3s;
+}
+
+.service-details .services-list a.active {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.service-details .services-list a:hover {
+  border-color: var(--accent-color);
+}
+
+.service-details .services-img {
+  margin-bottom: 20px;
+}
+
+.service-details h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.service-details h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.service-details p {
+  font-size: 15px;
+}
+
+.service-details ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.service-details ul li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.service-details ul i {
+  font-size: 20px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Starter Section Section
+--------------------------------------------------------------*/
+
+.text-justify{
+  text-align: justify;
+}
+
+.padding-set{
+  padding-left: 0px;
+  padding-right: 5px;
+}
+
+.container-margin{
+  margin: 0px 0px;
+  padding: 20px 20px;
+}
+
