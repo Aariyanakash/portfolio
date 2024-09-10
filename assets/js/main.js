@@ -197,7 +197,7 @@ headerToggleBtn.addEventListener('click', headerToggle);
 
 
 document.getElementById('download-btn').addEventListener('click', function() {
-  window.location.href = 'assets/documents/resume.pdf';
+  window.location.href = '/portfolio/assets/documents/resume.pdf';
 });
 
 
